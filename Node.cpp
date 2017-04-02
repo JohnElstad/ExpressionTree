@@ -14,7 +14,7 @@ Node::Node(int d){
   data.i = d;
   type = 2;
 }
-//deconstructor, clear memory
+//deconstructor does literally nothing unusual
 Node::~Node(){
 
 }
@@ -22,7 +22,7 @@ Node::~Node(){
 Node* Node::getNext(){
   return next;
 }
-//sets the pointer to the next node
+//sets pointer to the next node
 void Node::setNext(Node* n){
   next = n;
 }
@@ -30,12 +30,12 @@ void Node::setNext(Node* n){
 int Node::getIntData(){
   return data.i;
 }
-char Node::getCharData(){
-  if (type == 1){
+int Node::getType(){//returns the type
+  return type;
+}
+char Node::getCharData(){//returns the char
+  if (type == 1 ){
     return data.c;
   }
   else return 0;
-}
-int Node::getType(){
-  return type;
 }

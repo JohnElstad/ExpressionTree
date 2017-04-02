@@ -5,7 +5,7 @@
 #include <cstring>
 
 using namespace std;
-// John Elsta - this program takes in infix and converts it to postfix and prefix.
+// John Elstad - this program takes in infix and converts it to postfix and prefix.
 bool isOperator(char c);
 int precedence(char c);  
 Stack* shuntingYard(char* input);
@@ -17,6 +17,7 @@ void printInfix(BinaryNode* nodes);;
 
 
 int main(){// this is the main function
+  cout<<"Welcome to the Expression Tree"<<endl;
   char input[50];
   cin.get(input, 50);
   Stack* stack = shuntingYard(input);
