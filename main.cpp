@@ -5,7 +5,7 @@
 #include <cstring>
 
 using namespace std;
-
+// John Elsta - this program takes in infix and converts it to postfix and prefix.
 bool isOperator(char c);
 int precedence(char c);  
 Stack* shuntingYard(char* input);
@@ -16,7 +16,7 @@ void printPrefix (BinaryNode* node);
 void printInfix(BinaryNode* nodes);;
 
 
-int main(){
+int main(){// this is the main function
   char input[50];
   cin.get(input, 50);
   Stack* stack = shuntingYard(input);
@@ -34,7 +34,7 @@ int main(){
   cout << endl;
 }
 
-void print(BinaryNode* node, int indent){ 
+void print(BinaryNode* node, int indent){//prints out the tree 
   
   if (node->getRight())
     print(node->getRight(),indent+1);
@@ -47,21 +47,21 @@ void print(BinaryNode* node, int indent){
     print(node->getLeft(),indent+1);
 }
 
-void printPostfix (BinaryNode* node){
+void printPostfix (BinaryNode* node){//prints out the postfix notation
   if (node->getType() == 1){
     printPostfix(node->getRight());
     printPostfix(node->getLeft());
   }
   node->printData();
 }
-void printPrefix (BinaryNode* node){
+void printPrefix (BinaryNode* node){ //prints out the prefix notation
   node->printData();
   if (node->getType() == 1){
     printPrefix(node->getRight());
     printPrefix(node->getLeft());
   }
 }
-void printInfix(BinaryNode* node){
+void printInfix(BinaryNode* node){ //prints out the infix notation
   if (node->getType() == 1){
     printInfix(node->getRight());
     node->printData();
@@ -73,7 +73,7 @@ void printInfix(BinaryNode* node){
   
 }
 
-BinaryNode* makeTree(Stack* stack){
+BinaryNode* makeTree(Stack* stack){//this is what actually creates the tree by inputing things from the stack
   BinaryNode* binaryNode;
   if (stack->peek()->getType() == 1){
     binaryNode = new BinaryNode(stack->pop()->getCharData());
@@ -88,7 +88,7 @@ BinaryNode* makeTree(Stack* stack){
 }
 
 
-Stack* shuntingYard(char* input){
+Stack* shuntingYard(char* input){//shunting yard algorithm
   int i = 0;
   Stack* operatorStack = new Stack(); 
   Stack* outputStack = new Stack();
